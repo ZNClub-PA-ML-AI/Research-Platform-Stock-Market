@@ -11,6 +11,11 @@ from sklearn.linear_model import LinearRegression
 import pandas as pd
 import sys
 
+def csv_to_json(file_name):
+    df = pd.read_csv(file_name)
+    df.to_json()
+
+
 file_name = sys.argv[1]
 df=pd.read_csv(file_name)
 df = df[['Date', 'Open',  'High',  'Low',  'Close']]
@@ -60,13 +65,15 @@ print ('Accuracy Close TRADITIONAL: ', confidence*100)
 new_df = pd.DataFrame()
 for i, row in df.iterrows():
     to_predict = [row.Open, row.High, row.Low, row.Close]
-    temp_df = pd.DataFrame({'Open': [row.Open], 
+    temp_df = pd.DataFrame({
+			    'Date': [row.Date],
+			    'Open': [row.Open], 
                             'High': [row.High], 
                             'Low': [row.Low],
                             'Close': [row.Close],
-                            'open_predicted': [openModel.predict(to_predict)[0][0]], 
-                            'close_predicted': [closeModel.predict(to_predict)[0][0]]                                                
+                            'open_predicted': [openModel.predict([to_predict])[0][0]], 
+                            'close_predicted': [closeModel.predict([to_predict])[0][0]]                                                
                             })
     new_df = pd.concat([new_df, temp_df])
-    
-new_df.to_csv('traditional.csv', sep=',', encoding='utf-8')
+new_file_name = file_name.split('.')[0] + '1.csv'
+new_df.to_csv(new_file_name, sep=',', encoding='utf-8')
