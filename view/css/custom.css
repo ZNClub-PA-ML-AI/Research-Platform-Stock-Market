@@ -216,8 +216,8 @@
 	top: 0;
 	left: 0;
 	padding: 20px;
-	background: #000;
-	color: #ed4e6e;
+	background: #fff;
+	color: #000;
 }
 
 .grid figcaption h3 {
@@ -225,16 +225,17 @@
 	text-transform:uppercase;
 	margin: 0;
 	padding: 0;
-	color: #fff;
+	color: #000;
 }
 
 .grid figcaption a {
 	text-align: center;
+	font-size:18px;
 	padding: 5px 10px;
 	border-radius: 0;
 	display: inline-block;
-	background: #ed4e6e;
-	color: #fff;
+	background: #fff;
+	color: #000;
 }
 
 
@@ -284,6 +285,7 @@
 }
 
 .cs-style-3 figcaption a {
+	font-size:12px;
 	position: absolute;
 	bottom: 20px;
 	right: 20px;
@@ -306,13 +308,14 @@
 }
 
 .cs-style-2 figcaption {
-	height: 90px;
+	height: 70px;
 	width: 100%;
 	top: auto;
 	bottom: 0;
 }
 
 .cs-style-2 figcaption a {
+	font-size:12px;
 	position: absolute;
 	right: 20px;
 	top: 30px;
