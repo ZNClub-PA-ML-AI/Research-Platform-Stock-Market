@@ -1,18 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -42,18 +28,7 @@
     <!-- Custom Fonts & Icons -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/icomoon-social.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	
-	<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-	
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://code.highcharts.com/modules/exporting.js"></script>
-	<script src="https://code.highcharts.com/stock/highstock.js"></script>
-	
-	<script src="js/stock_exporting.js"></script>
-	<script src="js/candlestick.js"></script>   
-	<script src="js/spline.js"></script> 
-	<script src="js/dual.js"></script> 
+	<link rel="stylesheet" href="css/font-awesome.min.css">	
 
 </head>
 
@@ -72,7 +47,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Basica"></a>
+                <a class="navbar-brand" href="index.html">
+				<img style="width:100px;height:80px;" src="https://avatars2.githubusercontent.com/u/19271302?v=3&s=200" alt="ZNClub-PA-ML-AI">
+				</a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -89,7 +66,7 @@
 		<div class="section section-breadcrumbs">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-12"><h1></h1>
 						<h1>Market News Analysis</h1>
 					</div>
 				</div>
@@ -100,27 +77,25 @@
 	    	<div class="container">
 				<div class="row">
 				
-				<div class="col-sm-12">
+
 								
-				<!--<img class="img-responsive" src="img/slides/1.jpg" alt="Full Width Banner Image">-->
-				<div id="container1" style="min-width: 310px; max-height:500px; margin: 0 auto"></div>
 				
+				<!--<div id="container1" style="min-width: 310px; max-height:500px; margin: 0 auto"></div>-->
+				
+				
+								
+				<div class="col-sm-12">				  
+					<!-- sentiment spline -->  
+					<div id="container2" style=" min-width: 310px; max-height:500px; margin: 0 auto"></div>
 				</div>
+
+				<div class="col-sm-12">				  
+					<!-- dual chart -->  
+					<div id="container3" style=" min-width: 310px;max-height:500px; margin: 0 auto"></div>
+				</div>
+	
+						
 				
-				<div class="col-sm-12">
-						
-						<h3>Specializing in Wordpress Theme Development</h3>
-						
-						
-				<div class="clients-logo-wrapper text-center row">
-					<div class="col-lg-2 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-1.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-2 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-2.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-2 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-3.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-2 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-4.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-2 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-5.jpg" alt="Client Name"></a></div>
-					<div class="col-lg-2 col-md-1 col-sm-3 col-xs-6"><a href="#"><img src="img/logos/logo-6.jpg" alt="Client Name"></a></div>
-				</div>						
-					</div>
 				</div>
 			</div>
 		</div>
@@ -169,7 +144,7 @@
 	    </div> -->
 
         <!-- Javascripts -->
-        
+		<script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
 
 		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -182,7 +157,6 @@
 		<script src="js/dual.js"></script> 
 
 
-		
 		<!-- Scrolling Nav JavaScript -->
 		<script src="js/jquery.easing.min.js"></script>
 		<script src="js/scrolling-nav.js"></script>		
@@ -191,22 +165,5 @@
 	
 </html>
 
-
-
-<html>
-
-<body>
-<!-- quandl candlestick -->  
-<div id="container1" style="min-width: 310px; height:100vh; margin: 0 auto"></div>
-  
-<!-- sentiment spline -->  
-<div id="container2" style=" min-width: 310px; height:100vh; margin: 0 auto"></div>
-
-<!-- dual chart -->  
-<div id="container3" style=" min-width: 310px;height:100vh; margin: 0 auto"></div>
-
-
-</body>
-</html>
 
 
