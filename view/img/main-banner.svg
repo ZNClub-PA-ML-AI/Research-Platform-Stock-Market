@@ -1,14 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:se="http://svg-edit.googlecode.com" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="1000" height="1000">
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" 
+width="1000" height="1000">
   <title>my vector image</title>
-    <defs>
+   <rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="#FFFFFF" stroke="1" />
+	<defs>
         <clipPath id="traditional">
-            <circle cx="200" cy="100" r="100" fill="#000000" />            
+            <circle cx="50" cy="100" r="70" fill="#000000" />            
         </clipPath>
     </defs>
     <defs>
         <clipPath id="twitter">
-            <circle cx="500" cy="100" r="100" fill="#000000" />            
+            <circle cx="130" cy="100" r="70" fill="#000000" />            
         </clipPath>
     </defs>
     <!--<defs>
@@ -22,10 +24,10 @@ xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="1000" height
         </clipPath>
     </defs>
 -->
-<image width="500" height="250" 
+<image width="300" height="200" x="0" y="0"
 xlink:href="https://www.amrita.edu/sites/default/files/news-images/new/news-events/images/l-nov/grass.jpg" clip-path="url(#traditional)" />
 
-<image width="500" height="250" xlink:href="https://image.shutterstock.com/z/stock-photo-magnifier-and-graph-basic-tools-of-technical-analysis-on-the-stock-market-66483862.jpg" clip-path="url(#twitter)" />
+<image width="400" height="200" xlink:href="https://image.shutterstock.com/z/stock-photo-magnifier-and-graph-basic-tools-of-technical-analysis-on-the-stock-market-66483862.jpg" clip-path="url(#twitter)" />
 <!--
 <image width="500" height="250" xlink:href="https://image.shutterstock.com/z/stock-photo-magnifier-and-graph-basic-tools-of-technical-analysis-on-the-stock-market-66483862.jpg" clip-path="url(#market_news)" />
 
