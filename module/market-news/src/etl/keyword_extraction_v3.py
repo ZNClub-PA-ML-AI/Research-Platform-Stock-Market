@@ -16,7 +16,7 @@ else:
     company_id=sys.argv[1]
 
 # read file
-filenames=['../../labeled.csv','../../../data/explicit/company_keyword.xlsx']
+filenames=['../../data/labeled.csv','../../data/company_keyword.xlsx']
 
 df =pd.read_csv(filenames[0])
 df1=pd.read_excel(filenames[1],sheetname='Sheet1')
