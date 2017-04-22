@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:se="http://svg-edit.googlecode.com" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="1000" height="1000">
+  <title>my vector image</title>
+    <defs>
+        <clipPath id="traditional">
+            <circle cx="200" cy="100" r="100" fill="#000000" />            
+        </clipPath>
+    </defs>
+    <defs>
+        <clipPath id="twitter">
+            <circle cx="500" cy="100" r="100" fill="#000000" />            
+        </clipPath>
+    </defs>
+    <!--<defs>
+        <clipPath id="market_news">
+            <circle cx="800" cy="100" r="100" fill="#000000" />            
+        </clipPath>
+    </defs>
+    <defs>
+        <clipPath id="hybrid">
+            <circle cx="500" cy="600" r="150" fill="#000000" />            
+        </clipPath>
+    </defs>
+-->
+<image width="500" height="250" 
+xlink:href="https://www.amrita.edu/sites/default/files/news-images/new/news-events/images/l-nov/grass.jpg" clip-path="url(#traditional)" />
+
+<image width="500" height="250" xlink:href="https://image.shutterstock.com/z/stock-photo-magnifier-and-graph-basic-tools-of-technical-analysis-on-the-stock-market-66483862.jpg" clip-path="url(#twitter)" />
+<!--
+<image width="500" height="250" xlink:href="https://image.shutterstock.com/z/stock-photo-magnifier-and-graph-basic-tools-of-technical-analysis-on-the-stock-market-66483862.jpg" clip-path="url(#market_news)" />
+
+<image width="500" height="250" xlink:href="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTeksE8OYL3d9sPQzcTa62zjw77bpAdACO9QB6EVbXfHAnUq6UB" clip-path="url(#hybrid)" />
+-->
+
+ </svg>
