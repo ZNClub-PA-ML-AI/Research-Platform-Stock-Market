@@ -10,7 +10,7 @@ if platform.system()=='Windows':
 else:
     company_id=sys.argv[1]
 
-filenames=['../../'+company_id+'_score_open.csv','../../'+company_id+'_score_close.csv']
+filenames=['../../data/'+company_id+'_score_open.csv','../../'+company_id+'_score_close.csv']
 
 #open.csv
 df1=pd.read_csv(filenames[0])
@@ -27,7 +27,7 @@ result=pd.concat([df1,df2],axis=1,join='inner')
 out=pd.DataFrame(result[[0,1,3]])
 print(out.head(23))
 
-out.to_csv('../../'+company_id+'_sentiment.csv',encoding='utf-8',sep=',')
+out.to_csv('../../data/'+company_id+'_sentiment.csv',encoding='utf-8',sep=',')
 
 
 

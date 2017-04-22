@@ -16,7 +16,7 @@ if platform.system()=='Windows':
 else:
     company_id,filter=sys.argv[1],sys.argv[2]
 
-filenames=['../../'+company_id+'.csv']
+filenames=['../../data/'+company_id+'.csv']
 
 df=pd.read_csv(filenames[0])
 date_list = df.date.tolist()
@@ -37,8 +37,8 @@ for k,v in od.items():
 ## competitor def
 def is_competitor(title,intro,body,company):
     
-    df1 = pd.read_excel('../../../data/explicit/company_keyword.xlsx','Sheet1')
-    df2 = pd.read_excel('../../../data/explicit/company_keyword.xlsx','Sheet2')
+    df1 = pd.read_excel('../../data/company_keyword.xlsx','Sheet1')
+    df2 = pd.read_excel('../../data/company_keyword.xlsx','Sheet2')
     competitors=list()
     competitor=collections.defaultdict(list)
 
@@ -98,6 +98,6 @@ for k,v in od.items():
 
 df=pd.DataFrame(score,index=['score'])
 df=df.transpose()
-df.to_csv('../../'+company_id+'_score_'+filter+'.csv',sep=',',encoding='utf-8')
+df.to_csv('../../data/'+company_id+'_score_'+filter+'.csv',sep=',',encoding='utf-8')
 #df.to_json('TCS_score_open.json')
 

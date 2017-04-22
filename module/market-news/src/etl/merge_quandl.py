@@ -11,7 +11,7 @@ if platform.system()=='Windows':
 else:
     company_id=sys.argv[1]
 
-filenames=['../../'+company_id+'_sentiment.csv','../../NSE-'+company_id+'.csv']
+filenames=['../../data/'+company_id+'_sentiment.csv','../../data/NSE-'+company_id+'.csv']
 
 
 #sentiment csv
@@ -51,7 +51,7 @@ df3.columns=['#','open_score','close_score','Open','High','Low','Last','Close','
 print(df3.columns)
 
 df3=df3.sort_index()
-df3.to_csv('../../'+company_id+'_qs.csv',encoding='utf-8',sep=',')
+df3.to_csv('../../data/'+company_id+'_qs.csv',encoding='utf-8',sep=',')
 print(df3.head())
 
 

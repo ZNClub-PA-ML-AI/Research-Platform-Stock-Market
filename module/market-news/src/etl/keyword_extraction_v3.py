@@ -123,6 +123,6 @@ for i,r in df.iterrows():
         
 result = result.set_index(['score'])
 print(result.describe())
-result.to_csv('../../'+company_id+'.csv',encoding='utf-8',sep=',')
+result.to_csv('../../data/'+company_id+'.csv',encoding='utf-8',sep=',')
 
 
