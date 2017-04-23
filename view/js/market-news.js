@@ -1,10 +1,15 @@
 
-// spline.js
+
+labeledSpline();
+dualCharts();
+
+
+function labeledSpline(){
+	// spline.js
 
 //https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Business-News/95e16a9b/REL_score_open.json
 
 //https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Business-News/4d982b42/data/json/REL_sentiment.json
-
 $.getJSON('https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Business-News/4d982b42/data/json/REL_sentiment.json', function(data) {
 
   //var close_map = data.close_score;
@@ -136,7 +141,10 @@ $.getJSON('https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Busin
   });
 });
 
+}
 
+
+function dualCharts(){
 // dual.js
 
 //getJSON
@@ -234,13 +242,7 @@ $.getJSON('https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Busin
         name: 'Sentiment',
         type: 'spline',
         yAxis: 1,
-        data: sentiment
-          /*    [
-                [Date.UTC(2017, 02, 22), -0.49],
-                [Date.UTC(2017, 02, 23), 0.02],
-                [Date.UTC(2017, 02, 28), -0.20]
-
-              ]*/
+        data: sentiment         
           ,
         tooltip: {
           valueSuffix: ' '
@@ -249,12 +251,7 @@ $.getJSON('https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Busin
       }, {
         name: 'Open Price',
         type: 'spline',
-        data: price
-          /*    [
-                [Date.UTC(2017, 02, 22), 1149.9],
-                [Date.UTC(2017, 02, 23), 1171.5],
-                [Date.UTC(2017, 02, 28), 1100.4]
-              ]*/
+        data: price        
           ,
         tooltip: {
           valueSuffix: 'Rs'
@@ -262,7 +259,6 @@ $.getJSON('https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Busin
       }]
     });
 
-
-
   });
 
+}
