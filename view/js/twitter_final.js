@@ -32,7 +32,7 @@ function labeledSpline(){
 		  console.log(dateUTC)
 	  }
 
-	  Highcharts.chart('container', {
+	  Highcharts.chart('container2', {
 	    chart: {
 	      type: 'spline',
 	      zoomType: 'xy'
@@ -176,7 +176,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/twitter/merged_with_NS
 
 
 
-    Highcharts.chart('container', {
+    Highcharts.chart('container3', {
       chart: {
         zoomType: 'x'
       },
@@ -311,7 +311,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/twitter/merged_with_NS
 
 
 
-    Highcharts.chart('container', {
+    Highcharts.chart('container4', {
       chart: {
         zoomType: 'x'
       },
