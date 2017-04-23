@@ -1,4 +1,4 @@
-$.getJSON('https://cdn.rawgit.com/melwyn95/Machine-Learning---Stocks-Prediction/a9c0e07a1aec9405a2e5bd65c73df00e9badff95/traditional.json', function(data) {
+$.getJSON('/Research-Platform-Stock-Market/view/js/traditional.json', function(data) {
 
   var size = Object.keys(data.date).length;
   var close = [];
