@@ -7,17 +7,24 @@ import platform
 
 
 if platform.system()=='Windows':
-    company_id,type='AX','qs'
+    company_id,type_id='AX','qs'
 else:
-    company_id=sys.argv[1],sys.argv[2]
+    company_id,type_id=sys.argv[1],sys.argv[2]
 
-filenames=['../../data/'+company_id+'_'+type+'.csv']
+filenames=[]
+if type_id=='NSE':
+    filenames=['../../data/'+type_id+'-'+company_id+'.csv']
+else:
+    filenames=['../../data/'+company_id+'_'+type_id+'.csv']
 df=pd.read_csv(filenames[0])
+
 #df = df.set_index(['date'])
-df = df.sort_values(['Date'],ascending=[1])
+if type_id=='NSE':
+    df = df.sort_values(['Date'],ascending=[1])
+    
 print(df.head(1))
 #print(filename[:-3])
-df.to_json('../../../view/js/data/'+company_id+'_'+type+'.json')
+df.to_json('../'+company_id+'_'+type_id+'.json')
 
 
 
