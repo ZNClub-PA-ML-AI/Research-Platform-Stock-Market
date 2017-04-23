@@ -2,9 +2,16 @@ $(document).ready(function(){
 	$('.select-company').click(function () {
 		var selected = $('#company-dropdown').val();
 		var company_name = $('#company-dropdown option:selected').text();
-		$.getJSON('/Research-Platform-Stock-Market/view/php/traditional.php?company='+selected, function(data) {
+		var from_year = $('#from-year').val();
+		var from_month = $('#from-month').val();
+		var from_day = $('#from-day').val();
+		var from_date = from_year+"-"+from_month+"-"+from_day;
+		var to_year = $('#to-year').val();
+		var to_month = $('#to-month').val();
+		var to_day = $('#to-day').val();
+		var to_date = to_year+"-"+to_month+"-"+to_day;
+		$.getJSON('/Research-Platform-Stock-Market/view/php/traditional.php?company='+selected+'&from='+from_date+"&to="+to_date, function(data) {			
 			//console.log(data);
-			
 			var size = Object.keys(data.Date).length;
 			var open_predicted = [];
 			var open = [];
@@ -22,7 +29,9 @@ $(document).ready(function(){
 				open.push([dateUTC, data.Open[i]]);
 				open_predicted.push([dateUTC, data.open_predicted[i]]);
 		  }
-
+		  var accuracy = data.accuracy;
+		  console.log(accuracy);
+		  $('#accuracy').text('Accuracy: '+accuracy);
 		  Highcharts.chart('container1', {
 			chart: {
 			  type: 'spline',

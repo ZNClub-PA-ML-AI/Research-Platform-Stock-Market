@@ -13,9 +13,16 @@ from sklearn import preprocessing, cross_validation
 from sklearn.linear_model import LinearRegression
 import pandas as pd
 import sys
+import quandl
 
-file_name = '/var/www/html/Research-Platform-Stock-Market/module/traditional/data/'+sys.argv[1]
-df=pd.read_csv(file_name)
+#file_name = '/var/www/html/Research-Platform-Stock-Market/module/traditional/data/'+sys.argv[1]
+#df=pd.read_csv(file_name)
+
+df = quandl.get(sys.argv[1], authtoken="-zLmnBx6NmesMSEA_2MU", start_date=sys.argv[2], end_date=sys.argv[3])
+df.to_csv('a.csv')
+df = pd.read_csv('a.csv')
+os.remove('a.csv')
+
 df = df[['Date', 'Open',  'High',  'Low',  'Close']]
 
 df.fillna(value=-99999, inplace=True)
@@ -94,5 +101,8 @@ new_df = new_df.reset_index()
 
 #new_df =  new_df.sort_values(['Date'],ascending=[1])
 
-new_df =  new_df.sort_values(by='Date')
-print (new_df.to_json())
+#print (new_df.to_json())
+json_object = new_df.to_json()
+json_object = json.loads(json_object)
+json_object['accuracy'] = confidence*100
+print (json.dumps(json_object))
