@@ -1,12 +1,14 @@
 
-candlestick();
-predictionChart();
+company_id='AX';
 
-function candlestick(){
+candlestick(company_id);
+//predictionChart();
+
+function candlestick(company_id){
 	
 //[1269820800000,33.29,33.41,33.09,33.20,135185785],
 
-$.getJSON('/Research-Platform-Stock-Market/view/js/data/NSE-RELIANCE.json', function(data) {
+$.getJSON('/Research-Platform-Stock-Market/view/js/data/NSE-'+company_id+'.json', function(data) {
   var open = data['Open'];
   var high = data['High'];
   var low = data['Low'];
@@ -128,7 +130,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/js/data/NSE-RELIANCE.json', func
 
 }
 
-
+/*
 function predictionChart(){
 
 $.getJSON('/Research-Platform-Stock-Market/view/js/data/traditional.json', function(data) {
@@ -204,3 +206,4 @@ $.getJSON('/Research-Platform-Stock-Market/view/js/data/traditional.json', funct
   });
 });
 }
+*/
