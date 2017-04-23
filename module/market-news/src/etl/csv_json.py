@@ -7,7 +7,7 @@ import platform
 
 
 if platform.system()=='Windows':
-    company_id,type_id='AX','NSE'
+    company_id,type_id='TCS','sentiment'
 else:
     company_id,type_id=sys.argv[1],sys.argv[2]
 
@@ -25,9 +25,9 @@ if type_id=='NSE':
 print(df.head(1))
 #print(filename[:-3])
 if type_id=='NSE':
-    df.to_json('../../../'+type_id+'-'+company_id+'.json')
+    df.to_json('../../../../view/js/data/'+type_id+'-'+company_id+'.json')
 else:
-    df.to_json('../../../'+company_id+'_'+type_id+'.json')
+    df.to_json('../../../../view/js/data/'+company_id+'_'+type_id+'.json')
 
 
 

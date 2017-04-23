@@ -1,15 +1,15 @@
+company_id='AX';
+
+labeledSpline(company_id);
+dualCharts(company_id);
 
 
-labeledSpline();
-dualCharts();
-
-
-function labeledSpline(){
+function labeledSpline(company_id){
 	// spline.js
 //https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Business-News/95e16a9b/REL_score_open.json
 //https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Business-News/4d982b42/data/json/REL_sentiment.json
 
-$.getJSON('/Research-Platform-Stock-Market/view/js/data/REL_sentiment.json', function(data) {
+$.getJSON('/Research-Platform-Stock-Market/view/js/data/'+company_id+'_sentiment.json', function(data) {
 
   //var close_map = data.close_score;
   var size = Object.keys(data.date).length;
@@ -143,13 +143,13 @@ $.getJSON('/Research-Platform-Stock-Market/view/js/data/REL_sentiment.json', fun
 }
 
 
-function dualCharts(){
+function dualCharts(company_id){
 // dual.js
 
 //getJSON
 //https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Business-News/54103f1e/data/json/REL_qs.json
 
-$.getJSON('/Research-Platform-Stock-Market/view/js/data/REL_qs.json',function(data) {
+$.getJSON('/Research-Platform-Stock-Market/view/js/data/'+company_id+'_qs.json',function(data) {
     //console.log(data['Unnamed: 0'][0]);
 
     var price = [];
