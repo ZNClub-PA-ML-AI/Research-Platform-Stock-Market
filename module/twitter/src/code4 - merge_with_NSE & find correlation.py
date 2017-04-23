@@ -59,7 +59,7 @@ result = pd.concat([df3, df4], axis=1,join='inner')
 result = result.reset_index('date')
 print(result)
 result.to_csv('/var/www/html/Research-Platform-Stock-Market/module/twitter/data/merged_with_NSE_data.csv', sep=',', encoding='utf-8')
-result.to_json('/var/www/html/Research-Platform-Stock-Market/view/json/merged_with_NSE_data.json')
+result.to_json('/var/www/html/Research-Platform-Stock-Market/view/data/json/twitter/merged_with_NSE_data.json')
 
 #finding correlation
 print("Open price correlation:", result['Open'].corr(result['open_score']))
