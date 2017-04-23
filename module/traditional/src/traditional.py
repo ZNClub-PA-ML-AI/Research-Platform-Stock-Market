@@ -1,9 +1,12 @@
+#!/home/melwyn95/anaconda3/bin/python
+
 # -*- coding: utf-8 -*-
 """
 Created on Mon Apr 10 04:15:27 2017
 
 @author: Melwyn
 """
+import json
 import os
 import numpy as np
 from sklearn import preprocessing, cross_validation
@@ -48,17 +51,18 @@ confidence = openModel.score(X_test, y_test)
 #print("Accuracy Open TRADITIONAL: ", confidence * 100.0)
 
 
-y = np.array(df[['ForecastClose']])
-X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2)
+#y = np.array(df[['ForecastClose']])
+#X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2)
 
 
-closeModel = LinearRegression(n_jobs=-1)
-closeModel.fit(X_train, y_train)
-confidence = closeModel.score(X_test, y_test)
+#closeModel = LinearRegression(n_jobs=-1)
+#closeModel.fit(X_train, y_train)
+#confidence = closeModel.score(X_test, y_test)
 #print ('Accuracy Close TRADITIONAL: ', confidence*100)
 
 new_df = pd.DataFrame()
 for i, row in df.iterrows():
+#    print (i)
     to_predict = [row.Open, row.High, row.Low, row.Close]
     temp_df = pd.DataFrame({
 			    'Date': [row.Date],
@@ -66,18 +70,29 @@ for i, row in df.iterrows():
                             'High': [row.High], 
                             'Low': [row.Low],
                             'Close': [row.Close],
-                            'open_predicted': [openModel.predict([to_predict])[0][0]], 
-                            'close_predicted': [closeModel.predict([to_predict])[0][0]]                                                
-                            })
+                            'open_predicted': [openModel.predict([to_predict])[0][0]]})#, 
+#                            'close_predicted': [closeModel.predict([to_predict])[0][0]]                                                
+#                            })
     new_df = pd.concat([new_df, temp_df])
-new_df.to_csv('traditional.csv', sep=',', encoding='utf-8')
+#new_df.to_csv('traditional.csv', sep=',', encoding='utf-8')
 
+new_df = new_df.reset_index()
 
-file_name = file_name.split('.')
-file_name = file_name[0].split('/')
-file_name = file_name[len(file_name)-1]
+#file_name = file_name.split('.')
+#file_name = file_name[0].split('/')
+#file_name = file_name[len(file_name)-1]
 
 #print (file_name)
-df = pd.read_csv('traditional.csv')
-df.to_json('/var/www/html/Research-Platform-Stock-Market/view/json/'+file_name+'.json')
-os.remove('traditional.csv')
+#df = pd.read_csv('traditional.csv')
+
+#df = df.sort_values(['Date'],ascending=[1])
+#df.sort_values(by='Date')
+
+#df.to_json('/var/www/html/Research-Platform-Stock-Market/view/json/'+file_name+'.json')
+#print (json.dumps(new_df.to_json()))
+#os.remove('traditional.csv')
+
+#new_df =  new_df.sort_values(['Date'],ascending=[1])
+
+new_df =  new_df.sort_values(by='Date')
+print (new_df.to_json())
