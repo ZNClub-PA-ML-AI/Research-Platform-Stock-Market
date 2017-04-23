@@ -104,6 +104,6 @@ result1 = result1.reset_index('date')
 
 print(result1)
 result1.to_csv('/var/www/html/Research-Platform-Stock-Market/module/twitter/data/Reliance_score.csv',sep=',',encoding='utf-8')
-result1.to_json('/var/www/html/Research-Platform-Stock-Market/view/json/Reliance_score.json')
+result1.to_json('/var/www/html/Research-Platform-Stock-Market/view/data/json/twitter/Reliance_score.json')
 
 
