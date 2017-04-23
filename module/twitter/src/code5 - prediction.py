@@ -4,7 +4,11 @@ import numpy as np
 from sklearn import preprocessing, cross_validation
 from sklearn.linear_model import LinearRegression
 
-result=pd.read_csv('merged_with_NSE_data.csv')
+filenames = '/var/www/html/Research-Platform-Stock-Market/module/twitter/data/'+ sys.argv[1]
+result = pd.read_csv(filenames)
+#result=pd.read_csv('merged_with_NSE_data.csv')
+
+
 print("Open price correlation:", result['Open'].corr(result['open_score']))
 print("Close price correlation:", result['Close'].corr(result['close_score']))
 
