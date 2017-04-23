@@ -15,8 +15,9 @@ import time
 
 
 # read file
-filenames=['merge_Rel_final.csv']
-df = pd.read_csv(filenames[0])
+#filenames=['merge_Rel_final.csv']
+filenames = '/var/www/html/Research-Platform-Stock-Market/module/twitter/data/'+sys.argv[1]
+df = pd.read_csv(filenames)
 
 def sentiment_cal(tweet):	
 	sia = SentimentIntensityAnalyzer()	
@@ -32,7 +33,7 @@ for i,r in df.iterrows():
 	#print(temp)
 #print(result.head(2))
 
-result.to_csv('labeled.csv',encoding='utf-8',sep=',')
+result.to_csv('/var/www/html/Research-Platform-Stock-Market/module/twitter/data/labeled.csv',encoding='utf-8',sep=',')
 #print(time.time()-start)
 
 
