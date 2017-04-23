@@ -9,7 +9,7 @@ function labeledSpline(company_id){
 //https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Business-News/95e16a9b/REL_score_open.json
 //https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Business-News/4d982b42/data/json/REL_sentiment.json
 
-$.getJSON('/Research-Platform-Stock-Market/view/js/data/'+company_id+'_sentiment.json', function(data) {
+$.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_id+'_sentiment.json', function(data) {
 
   //var close_map = data.close_score;
   var size = Object.keys(data.date).length;
@@ -149,11 +149,14 @@ function dualCharts(company_id){
 //getJSON
 //https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Business-News/54103f1e/data/json/REL_qs.json
 
-$.getJSON('/Research-Platform-Stock-Market/view/js/data/'+company_id+'_qs.json',function(data) {
+$.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_id+'_qs.json',function(data) {
     //console.log(data['Unnamed: 0'][0]);
 
-    var price = [];
-    var sentiment = [];
+    var price_open = [];
+    var sentiment_open = [];
+	var price_close = [];
+    var sentiment_close = [];
+	
     var size = Object.keys(data.Open).length;
     console.log(size);
 
@@ -171,9 +174,12 @@ $.getJSON('/Research-Platform-Stock-Market/view/js/data/'+company_id+'_qs.json',
       }
       var dateUTC = Date.UTC(dates[0], m, dates[2]);
 
-      price.push([dateUTC, data.Open[i]]);
-      sentiment.push([dateUTC, data.open_score[i]]);
-      //console.log(i);
+      price_open.push([dateUTC, data.Open[i]]);
+      sentiment_open.push([dateUTC, data.open_score[i]]);
+	  price_close.push([dateUTC, data.Close[i]]);
+      sentiment_close.push([dateUTC, data.close_score[i]]);
+      
+	  //console.log(i);
       //console.log(price[i]);
     }
 
@@ -203,7 +209,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/js/data/'+company_id+'_qs.json',
           }
         },
         title: {
-          text: 'Stock Open Price',
+          text: 'Stock Price',
           style: {
             color: Highcharts.getOptions().colors[1]
           }
@@ -237,10 +243,10 @@ $.getJSON('/Research-Platform-Stock-Market/view/js/data/'+company_id+'_qs.json',
         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
       },
       series: [{
-        name: 'Sentiment',
+        name: 'Open Price Sentiment',
         type: 'spline',
         yAxis: 1,
-        data: sentiment         
+        data: sentiment_open         
           ,
         tooltip: {
           valueSuffix: ' '
@@ -249,12 +255,33 @@ $.getJSON('/Research-Platform-Stock-Market/view/js/data/'+company_id+'_qs.json',
       }, {
         name: 'Open Price',
         type: 'spline',
-        data: price        
+        data: price_open       
           ,
         tooltip: {
           valueSuffix: 'Rs'
         }
-      }]
+      },{
+        name: 'Close Price Sentiment',
+        type: 'spline',
+        yAxis: 1,
+        data: sentiment_close         
+          ,
+        tooltip: {
+          valueSuffix: ' '
+        }
+
+      },{
+        name: 'Close Price',
+        type: 'spline',
+        yAxis: 1,
+        data: price_close         
+          ,
+        tooltip: {
+          valueSuffix: ' '
+        }
+
+      }
+	  ]
     });
 
   });
