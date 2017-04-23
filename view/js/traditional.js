@@ -10,7 +10,7 @@ $(document).ready(function(){
 			var open = [];
 		 
 			for (var i = size-1; i >= 0; i--) {
-				console.log(data.Date[i]);
+				//console.log(data.Date[i]);
 				var dates = data.Date[i].split('-');
 				var m = dates[1];
 				m = parseInt(m) - 1;
