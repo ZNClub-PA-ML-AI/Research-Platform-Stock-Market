@@ -62,12 +62,12 @@ $.getJSON('/Research-Platform-Stock-Market/view/js/data/'+company_id+'_sentiment
       title: {
         text: 'Sentimental Score'
       },
-      min: -0.30,
+      min: -1.2,
       gridLineWidth: 0,
       alternateGridColor: null,
       plotBands: [{ 
-          from: 0.05,
-          to: -0.05,
+          from: 0.1,
+          to: -0.1,
           color: 'rgba(0, 0, 0, 0)',
           label: {
             text: 'NEUTRAL',
@@ -76,8 +76,8 @@ $.getJSON('/Research-Platform-Stock-Market/view/js/data/'+company_id+'_sentiment
             }
           }
         }, { 
-          from: 0.05,
-          to: 0.2,
+          from: 0.1,
+          to: 0.5,
           color: 'rgba(100, 255, 100, 0.2)',
           label: {
             text: 'POSITIVE',
@@ -86,8 +86,8 @@ $.getJSON('/Research-Platform-Stock-Market/view/js/data/'+company_id+'_sentiment
             }
           }
         }, { // Light air
-          from: 0.2,
-          to: 0.4,
+          from: 0.5,
+          to: 1.0,
           color: 'rgba(100, 255, 100, 0.4)',
           label: {
             text: 'HIGHLY POSITIVE',
@@ -96,8 +96,8 @@ $.getJSON('/Research-Platform-Stock-Market/view/js/data/'+company_id+'_sentiment
             }
           }
         }, { 
-          from: -0.05,
-          to: -0.2,
+          from: -0.1,
+          to: -0.5,
           color: 'rgba(255, 100, 100, 0.2)',
           label: {
             text: 'NEGATIVE',
@@ -106,8 +106,8 @@ $.getJSON('/Research-Platform-Stock-Market/view/js/data/'+company_id+'_sentiment
             }
           }
         },{
-          from: -0.2,
-          to: -0.4,
+          from: -0.5,
+          to: -1.0,
           color: 'rgba(255, 100, 100, 0.5)',
           label: {
             text: 'HIGHLY NEGATIVE',
