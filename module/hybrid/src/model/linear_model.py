@@ -8,11 +8,11 @@ import platform
 import sys
 
 if platform.system()=='Windows':
-    company_id='AX'
+    company_id='REL'
 else:
     company_id=sys.argv[1]
 
-df=pd.read_csv('../../data/'+company_id+'_qs.csv')
+df=pd.read_csv('../../data/'+company_id+'_hybrid.csv')
 df = df[['Open',  'High',  'Low',  'Close', 'open_score', 'close_score']]
 forecast_col = ['Open',  'High',  'Low',  'Close']
 df.fillna(value=-99999, inplace=True)
@@ -114,5 +114,6 @@ confidence = clf.score(X_test, y_test)
 print ('Hybrid Method Accuracy for Close price: ', confidence*100)
 
 
+# merge with REL_sentiment
 
-
+df2=pd.read_csv('../../data/'+company_id+'_sentiment.csv')
