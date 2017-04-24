@@ -117,3 +117,4 @@ print ('Hybrid Method Accuracy for Close price: ', confidence*100)
 # merge with REL_sentiment
 
 df2=pd.read_csv('../../data/'+company_id+'_sentiment.csv')
+
