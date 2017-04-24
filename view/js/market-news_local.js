@@ -264,7 +264,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
         name: 'Open Price',
         type: 'spline',
         data: price_open  ,
-		color: '#00FF80'
+		color: '#00B7FF'
           ,
         tooltip: {
           valueSuffix: 'Rs'
@@ -390,7 +390,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
         name: 'Close Price',
         type: 'spline',        
         data: price_close         
-          ,color: '#F6FF00',
+          ,color: '#00B7FF',
         tooltip: {
           valueSuffix: 'Rs'
         }
