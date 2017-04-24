@@ -13,7 +13,7 @@ else:
 
 path_in='../../data/'
 #path_in='../../'
-path_out='../../../../view/js/data/'
+path_out='../../../../view/data/json/market-news/'
 #path_out=path_in
 
 filenames=[]
