@@ -272,8 +272,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
 
       },{
         name: 'Close Price',
-        type: 'spline',
-        yAxis: 1,
+        type: 'spline',        
         data: price_close         
           ,
         tooltip: {
