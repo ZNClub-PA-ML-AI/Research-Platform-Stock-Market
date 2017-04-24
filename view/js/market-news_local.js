@@ -134,9 +134,9 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
     series: [{
       name: 'OpenPrice sentiment',
       data: open,
-	  style: {
-              color: '#FF0000'
-            }
+	  
+      color: '#FF0000'
+      
     }, {
       name: 'ClosePrice sentiment',
       data: close,
