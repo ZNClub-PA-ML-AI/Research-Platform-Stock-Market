@@ -16,7 +16,8 @@ $(document).ready(function(){
 			var open_predicted = [];
 			var open = [];
 		 
-			for (var i = size-1; i >= 0; i--) {
+			//for (var i = size-1; i >= 0; i--) {
+			for (var i = 0; i < size; i++) {
 				//console.log(data.Date[i]);
 				var dates = data.Date[i].split('-');
 				var m = dates[1];
