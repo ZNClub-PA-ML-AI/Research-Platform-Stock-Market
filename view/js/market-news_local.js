@@ -135,14 +135,14 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
       name: 'OpenPrice sentiment',
       data: open,
 	  
-      color: '#FF0000'
+      color: '#00FAA2'
       
     }, {
       name: 'ClosePrice sentiment',
       data: close,
-	  style: {
-              color: '#FF0000'
-            }
+	 
+		color: '#FFE16B'
+     
     }]
   });
 });
@@ -253,7 +253,8 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
         name: 'Open Price Sentiment',
         type: 'spline',
         yAxis: 1,
-        data: sentiment_open         
+        data: sentiment_open  ,
+		color: '#00FAA2'		
           ,
         tooltip: {
           valueSuffix: ' '
@@ -262,7 +263,8 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
       }, {
         name: 'Open Price',
         type: 'spline',
-        data: price_open       
+        data: price_open  ,
+		color: '#00FF80'
           ,
         tooltip: {
           valueSuffix: 'Rs'
@@ -379,7 +381,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
         type: 'spline',
         yAxis: 1,
         data: sentiment_close         
-          ,
+          ,color: '#FFE16B'
         tooltip: {
           valueSuffix: ' '
         }
@@ -388,7 +390,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
         name: 'Close Price',
         type: 'spline',        
         data: price_close         
-          ,
+          ,color: '#F6FF00'
         tooltip: {
           valueSuffix: 'Rs'
         }
