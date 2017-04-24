@@ -26,7 +26,7 @@ os.remove('a.csv')
 
 #print (df.head(5))
 
-df = df[['Date', 'Open',  'High',  'Low',  'Close']]
+df = df[['Date', 'Open',  'High',  'Low',  'Close', 'Total Trade Quantity']]
 
 df.fillna(value=-99999, inplace=True)
 
@@ -76,13 +76,14 @@ for i, row in df.iterrows():
 #    print (i)
     #print (i, row, prev)
     if i == 0:
-        prev = [row.Open, row.High, row.Low, row.Close]
+        prev = [row.Open, row.High, row.Low, row.Close, row['Total Trade Quantity']]
         temp_df = pd.DataFrame({
                             'Date': [row.Date],
                             'Open': [row.Open],
                             'High': [row.High],
                             'Low': [row.Low],
                             'Close': [row.Close],
+			    'TotalTradeQuantity': row['Total Trade Quantity'],
                             'open_predicted': [row.Open]})
         new_df = pd.concat([new_df, temp_df])
         continue
@@ -93,11 +94,12 @@ for i, row in df.iterrows():
                             'High': [row.High], 
                             'Low': [row.Low],
                             'Close': [row.Close],
+			    'TotalTradeQuantity': row['Total Trade Quantity'],
                             'open_predicted': [openModel.predict([prev])[0][0]]})#, 
 #                            'close_predicted': [closeModel.predict([to_predict])[0][0]]                                                
 #                            })
     new_df = pd.concat([new_df, temp_df])
-    prev = [row.Open, row.High, row.Low, row.Close]
+    prev = [row.Open, row.High, row.Low, row.Close, row['Total Trade Quantity']]
 #new_df.to_csv('traditional.csv', sep=',', encoding='utf-8')
 
 #print (new_df.head(5))
