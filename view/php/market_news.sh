@@ -1,11 +1,11 @@
 
 #run python scripts for market-news module
 
-#cd to etl dir
-#cd ../../module/market-news/src/etl
-#
+cd to etl dir
+cd ../../module/market-news/src/etl
+
 #run python modules
-#echo "module 1"
+echo "module 1"
 python keyword_extraction_v3.py $company_id
 
 echo "module 2"
@@ -16,7 +16,9 @@ echo "module 2"
 #take company_id as input
 ##company_id=$1
 
-cd ../../module/market-news/src/model
+
+echo "exec model"
+cd ../model
 
 python linear_model.py $company_id
 
