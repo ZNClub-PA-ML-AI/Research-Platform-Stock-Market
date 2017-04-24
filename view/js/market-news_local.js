@@ -381,7 +381,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
         type: 'spline',
         yAxis: 1,
         data: sentiment_close         
-          ,color: '#FFE16B'
+          ,color: '#FFE16B',
         tooltip: {
           valueSuffix: ' '
         }
@@ -390,7 +390,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
         name: 'Close Price',
         type: 'spline',        
         data: price_close         
-          ,color: '#F6FF00'
+          ,color: '#F6FF00',
         tooltip: {
           valueSuffix: 'Rs'
         }
