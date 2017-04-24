@@ -1,51 +1,5 @@
-"""
-Created on Thu Mar 23 20:58:21
-
-@author: ZNevzz
-"""
-import datetime
-import pandas as pd
-import collections
-import re
-import platform
-import sys
 
 
-if platform.system()=='Windows':
-    company_id,filter='AX','open'
-else:
-    company_id,filter=sys.argv[1],sys.argv[2]
-
-filenames=['../../data/'+company_id+'.csv']
-
-df=pd.read_csv(filenames[0])
-date_list = df.date.tolist()
-dates=set(date_list)
-#print(len(dates))
-
-result=pd.DataFrame()
-cnt = collections.Counter(date_list)
-#print(len(cnt))
-
-od = collections.OrderedDict(sorted(cnt.items()))
-
-score=dict()
-for k,v in od.items():
-    print(k,v)
-    score[k]=0
-
-## competitor def
-def is_competitor(title,intro,body,company):
-    
-    df1 = pd.read_excel('../../data/company_keyword.xlsx','Sheet1')
-    df2 = pd.read_excel('../../data/company_keyword.xlsx','Sheet2')
-    competitors=list()
-    competitor=collections.defaultdict(list)
-
-    for i,r in df2.iterrows():
-        if str(r.company)==company:
-    for i,r in df2.iterrows():
-        if str(r.company)==company:
 """
 Created on Thu Mar 23 20:58:21
 
