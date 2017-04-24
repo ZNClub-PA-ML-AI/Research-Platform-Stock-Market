@@ -5,17 +5,24 @@ import sys
 import pandas as pd
 import platform
 
-
+#sentiment or NSE
 if platform.system()=='Windows':
-    company_id,type_id='TCS','sentiment'
+    company_id,type_id='TCS','NSE'
 else:
     company_id,type_id=sys.argv[1],sys.argv[2]
 
+path_in='../../data/'
+#path_in='../../'
+path_out='../../../../view/data/json/market-news/'
+#path_out=path_in
+
 filenames=[]
+
 if type_id=='NSE':
-    filenames=['../../data/'+type_id+'-'+company_id+'.csv']
+    filenames=[path_in+type_id+'-'+company_id+'.csv']
 else:
-    filenames=['../../data/'+company_id+'_'+type_id+'.csv']
+    filenames=[path_in+company_id+'_'+type_id+'.csv']
+
 df=pd.read_csv(filenames[0])
 
 #df = df.set_index(['date'])
@@ -25,9 +32,9 @@ if type_id=='NSE':
 print(df.head(1))
 #print(filename[:-3])
 if type_id=='NSE':
-    df.to_json('../../../../view/js/data/'+type_id+'-'+company_id+'.json')
+    df.to_json(path_out+type_id+'-'+company_id+'.json')
 else:
-    df.to_json('../../../../view/js/data/'+company_id+'_'+type_id+'.json')
+    df.to_json(path_out+company_id+'_'+type_id+'.json')
 
 
 

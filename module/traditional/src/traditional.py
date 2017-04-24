@@ -13,10 +13,20 @@ from sklearn import preprocessing, cross_validation
 from sklearn.linear_model import LinearRegression
 import pandas as pd
 import sys
+import quandl
 
-file_name = '/var/www/html/Research-Platform-Stock-Market/module/traditional/data/'+sys.argv[1]
-df=pd.read_csv(file_name)
-df = df[['Date', 'Open',  'High',  'Low',  'Close']]
+#file_name = '/var/www/html/Research-Platform-Stock-Market/module/traditional/data/'+sys.argv[1]
+#df=pd.read_csv(file_name)
+
+df = quandl.get(sys.argv[1], authtoken="-zLmnBx6NmesMSEA_2MU", start_date=sys.argv[2], end_date=sys.argv[3])
+df.to_csv('a.csv')
+df = pd.read_csv('a.csv')
+os.remove('a.csv')
+
+
+#print (df.head(5))
+
+df = df[['Date', 'Open',  'High',  'Low',  'Close', 'Total Trade Quantity']]
 
 df.fillna(value=-99999, inplace=True)
 
@@ -61,22 +71,42 @@ confidence = openModel.score(X_test, y_test)
 #print ('Accuracy Close TRADITIONAL: ', confidence*100)
 
 new_df = pd.DataFrame()
+prev = []
 for i, row in df.iterrows():
 #    print (i)
-    to_predict = [row.Open, row.High, row.Low, row.Close]
+    #print (i, row, prev)
+    if i == 0:
+        prev = [row.Open, row.High, row.Low, row.Close, row['Total Trade Quantity']]
+        temp_df = pd.DataFrame({
+                            'Date': [row.Date],
+                            'Open': [row.Open],
+                            'High': [row.High],
+                            'Low': [row.Low],
+                            'Close': [row.Close],
+			    'TotalTradeQuantity': row['Total Trade Quantity'],
+                            'open_predicted': [row.Open]})
+        new_df = pd.concat([new_df, temp_df])
+        continue
+    #to_predict = [row.Open, row.High, row.Low, row.Close]
     temp_df = pd.DataFrame({
 			    'Date': [row.Date],
 			    'Open': [row.Open], 
                             'High': [row.High], 
                             'Low': [row.Low],
                             'Close': [row.Close],
-                            'open_predicted': [openModel.predict([to_predict])[0][0]]})#, 
+			    'TotalTradeQuantity': row['Total Trade Quantity'],
+                            'open_predicted': [openModel.predict([prev])[0][0]]})#, 
 #                            'close_predicted': [closeModel.predict([to_predict])[0][0]]                                                
 #                            })
     new_df = pd.concat([new_df, temp_df])
+    prev = [row.Open, row.High, row.Low, row.Close, row['Total Trade Quantity']]
 #new_df.to_csv('traditional.csv', sep=',', encoding='utf-8')
 
+#print (new_df.head(5))
+
 new_df = new_df.reset_index()
+
+#print (new_df.head(5))
 
 #file_name = file_name.split('.')
 #file_name = file_name[0].split('/')
@@ -92,7 +122,10 @@ new_df = new_df.reset_index()
 #print (json.dumps(new_df.to_json()))
 #os.remove('traditional.csv')
 
-#new_df =  new_df.sort_values(['Date'],ascending=[1])
+#new_df =  new_df.sort_values(['Date'],ascending=[True])
 
-new_df =  new_df.sort_values(by='Date')
-print (new_df.to_json())
+#print (new_df.to_json())
+json_object = new_df.to_json()
+json_object = json.loads(json_object)
+json_object['accuracy'] = confidence*100
+print (json.dumps(json_object))
