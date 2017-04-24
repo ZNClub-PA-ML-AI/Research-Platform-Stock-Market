@@ -1,7 +1,8 @@
 company_id='AX';
 
 labeledSpline(company_id);
-dualCharts(company_id);
+dualChartsOpenScore(company_id);
+dualChartsCloseScore(company_id);
 
 
 function labeledSpline(company_id){
@@ -43,7 +44,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
       zoomType: 'x'
     },
     title: {
-      text: 'Market News Sentimental Graph'
+      text: 'Market News Sentimental Graph for NSE/'+company_id
     },
     subtitle: {
       text: 'Sentiment-analysis-using-Business-News'
@@ -131,10 +132,10 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
       }
     },
     series: [{
-      name: 'RELIANCE OP sentiment',
+      name: 'OpenPrice sentiment',
       data: open
     }, {
-      name: 'RELIANCE CP sentiment',
+      name: 'ClosePrice sentiment',
       data: close
     }]
   });
@@ -143,7 +144,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
 }
 
 
-function dualCharts(company_id){
+function dualChartsOpenScore(company_id){
 // dual.js
 
 //getJSON
@@ -154,8 +155,8 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
 
     var price_open = [];
     var sentiment_open = [];
-	var price_close = [];
-    var sentiment_close = [];
+	//var price_close = [];
+    //var sentiment_close = [];
 	
     var size = Object.keys(data.Open).length;
     console.log(size);
@@ -176,8 +177,8 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
 
       price_open.push([dateUTC, data.Open[i]]);
       sentiment_open.push([dateUTC, data.open_score[i]]);
-	  price_close.push([dateUTC, data.Close[i]]);
-      sentiment_close.push([dateUTC, data.close_score[i]]);
+	  //price_close.push([dateUTC, data.Close[i]]);
+      //sentiment_close.push([dateUTC, data.close_score[i]]);
       
 	  //console.log(i);
       //console.log(price[i]);
@@ -260,7 +261,114 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
         tooltip: {
           valueSuffix: 'Rs'
         }
-      },{
+      }
+	  ]
+    });
+
+  });
+
+}
+
+function dualChartsCloseScore(company_id){
+// dual.js
+
+//getJSON
+//https://cdn.rawgit.com/ZNClub-PA-ML-AI/Sentiment-analysis-using-Business-News/54103f1e/data/json/REL_qs.json
+
+$.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_id+'_qs.json',function(data) {
+    //console.log(data['Unnamed: 0'][0]);
+
+    //var price_open = [];
+    //var sentiment_open = [];
+	var price_close = [];
+    var sentiment_close = [];
+	
+    var size = Object.keys(data.Open).length;
+    console.log(size);
+
+    for (var i = 0; i < size; i += 1) {
+      var temp = data['Unnamed: 0'][i];
+      //split date ie key
+
+      var dates = temp.split('-');
+      //adjust month
+      var m = dates[1];
+      m = parseInt(m) - 1;
+      m = m.toString()
+      if (m.length == 1) {
+        m = "0" + m;
+      }
+      var dateUTC = Date.UTC(dates[0], m, dates[2]);
+
+      //price_open.push([dateUTC, data.Open[i]]);
+      //sentiment_open.push([dateUTC, data.open_score[i]]);
+	  price_close.push([dateUTC, data.Close[i]]);
+      sentiment_close.push([dateUTC, data.close_score[i]]);
+      
+	  //console.log(i);
+      //console.log(price[i]);
+    }
+
+
+
+
+    Highcharts.chart('container4', {
+      chart: {
+        zoomType: 'x'
+      },
+      title: {
+        text: 'Close Price and Market sentiment'
+      },
+      subtitle: {
+        text: 'Sentiment-analysis-using-Business-News'
+      },
+      xAxis: [{
+        type: 'datetime',
+        //categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        crosshair: true
+      }],
+      yAxis: [{ // Primary yAxis
+        labels: {
+          format: '{value} Rs',
+          style: {
+            color: Highcharts.getOptions().colors[1]
+          }
+        },
+        title: {
+          text: 'Stock Price',
+          style: {
+            color: Highcharts.getOptions().colors[1]
+          }
+        }
+      }, { // Secondary yAxis
+        title: {
+          text: 'Sentiment Score',
+          style: {
+            color: Highcharts.getOptions().colors[0]
+          }
+        },
+        labels: {
+          format: '{value}',
+          style: {
+            color: Highcharts.getOptions().colors[0]
+          }
+        },
+        opposite: true
+      }],
+      tooltip: {
+        shared: true
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'left',
+        x: 70,
+        y: 12,
+        verticalAlign: 'top',
+
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+      },
+      series: [{
         name: 'Close Price Sentiment',
         type: 'spline',
         yAxis: 1,
@@ -276,7 +384,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
         data: price_close         
           ,
         tooltip: {
-          valueSuffix: ' '
+          valueSuffix: 'Rs'
         }
 
       }
