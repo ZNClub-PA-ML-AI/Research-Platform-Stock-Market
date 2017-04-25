@@ -12,10 +12,37 @@ if platform.system()=='Windows':
 else:
     company_id=sys.argv[1]
 
-df=pd.read_csv('../../data/'+company_id+'_hybrid.csv')
-df = df[['Open',  'High',  'Low',  'Close', 'open_score', 'close_score']]
+#read file
+df1=pd.read_csv('../../data/'+company_id+'_qt.csv')
+df2=pd.read_csv('../../data/'+company_id+'_sentiment.csv')
+
+#slice df
+df1 = df1[['Date','Open',  'High',  'Low',  'Close', 'open_score', 'close_score']]
+df2 = df2[['date','open_score','close_score']]
+
+
+#rename columns to remove ambiguity
+df1.columns=['Date','Open',  'High',  'Low',  'Close','twi_open','twi_close']
+df2.columns=['date','news_open','news_close',]
+
+#set index for inner join
+df1=df1.set_index('Date')
+df2=df2.set_index('date')
+
+#print(df1.tail())
+#print(df1.columns)
+#print(df2.columns)
+
+#print(df1.shape)
+#print(df2.shape)
+
+df=pd.concat([df1,df2],axis='0',join='inner')
+#print(df.shape)
+#print(df.columns)
+
 forecast_col = ['Open',  'High',  'Low',  'Close']
 df.fillna(value=-99999, inplace=True)
+
 
 
 # forecast_out basically the days ka gap u want to set
@@ -29,35 +56,7 @@ df['ForecastClose'] = df[forecast_col[3]].shift(-forecast_out)
 # temporary copy
 data=copy.deepcopy(df)
 
-# tradition open price
-X = np.array(df.drop(['ForecastOpen', 'ForecastClose','open_score','close_score'], 1))
-X = X[:-forecast_out]
-df.dropna(inplace=True)
-
-y = np.array(df[['ForecastOpen']])
-X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2)
-
-clf = LinearRegression(n_jobs=-1)
-clf.fit(X_train, y_train)
-confidence = clf.score(X_test, y_test)
-print("Traditional Method Accuracy for Open Price: ", confidence * 100.0)
-
-# sentimental open price
-df=copy.deepcopy(data)
-X = np.array(df[['open_score']])
-X = X[:-forecast_out]
-df.dropna(inplace=True)
-
-y = np.array(df[['ForecastOpen']])
-X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2)
-
-clf = LinearRegression(n_jobs=-1)
-clf.fit(X_train, y_train)
-confidence = clf.score(X_test, y_test)*-1
-print("Sentimental Method Accuracy for Open Price: ", confidence * 100.0)
-
-
-# hybrid open price
+#hybrid close price
 df=copy.deepcopy(data)
 X = np.array(df.drop(['ForecastOpen', 'ForecastClose'], 1))
 X = X[:-forecast_out]
@@ -69,35 +68,7 @@ X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_
 clf = LinearRegression(n_jobs=-1)
 clf.fit(X_train, y_train)
 confidence = clf.score(X_test, y_test)
-print("Hybrid Method Accuracy for Open Price: ", confidence * 100.0)
-
-#traditional close price
-df=copy.deepcopy(data)
-X = np.array(df.drop(['ForecastOpen', 'ForecastClose','open_score','close_score'], 1))
-X = X[:-forecast_out]
-df.dropna(inplace=True)
-
-y = np.array(df[['ForecastClose']])
-X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2)
-
-clf = LinearRegression(n_jobs=-1)
-clf.fit(X_train, y_train)
-confidence = clf.score(X_test, y_test)
-print("Traditional Method Accuracy for Close Price: ", confidence * 100.0)
-
-# sentimental close price
-df=copy.deepcopy(data)
-X = np.array(df[['close_score']])
-X = X[:-forecast_out]
-df.dropna(inplace=True)
-
-y = np.array(df[['ForecastClose']])
-X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2)
-
-clf = LinearRegression(n_jobs=-1)
-clf.fit(X_train, y_train)
-confidence = clf.score(X_test, y_test)*1
-print("Sentimental Method Accuracy for Close Price: ", confidence * 100.0)
+print ('Hybrid Method Accuracy for Open price: ', confidence*100)
 
 #hybrid close price
 df=copy.deepcopy(data)
@@ -112,9 +83,4 @@ clf = LinearRegression(n_jobs=-1)
 clf.fit(X_train, y_train)
 confidence = clf.score(X_test, y_test)
 print ('Hybrid Method Accuracy for Close price: ', confidence*100)
-
-
-# merge with REL_sentiment
-
-df2=pd.read_csv('../../data/'+company_id+'_sentiment.csv')
 

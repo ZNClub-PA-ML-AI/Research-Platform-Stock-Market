@@ -28,9 +28,12 @@ df2['PC_open']=df2['Open']-df2['shift_close']
 df2['PC_close']=df2['Open']-df2['Close']
 
 df2=df2.set_index('Date')
+
 #print(df2.head(1))
 
 df3=pd.concat([df1,df2],axis='2',join='inner')
+
+
 #print(df3.head(1),df3.columns,df3.describe())
 #print(df3.index.values)
 #print(df1.shape,df2.shape,df3.shape)
