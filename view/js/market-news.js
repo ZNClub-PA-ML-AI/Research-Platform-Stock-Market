@@ -14,7 +14,7 @@ $('#select-company').click(function () {
 		labeledSpline(company_id);
 		dualChartsOpenScore(company_id);
 		dualChartsCloseScore(company_id);
-		
+		company_id='';
 	}
 	
 });
