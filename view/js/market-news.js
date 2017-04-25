@@ -1,4 +1,14 @@
-company_id='AX';
+var company_id='';
+
+
+$('#select-company').click(function () {
+	company_id=$('#company-dropdown option:selected').text();
+	if(company_id=='None'){
+		alert('Select a Company from the given options');
+	}
+	
+}
+
 
 labeledSpline(company_id);
 dualChartsOpenScore(company_id);
