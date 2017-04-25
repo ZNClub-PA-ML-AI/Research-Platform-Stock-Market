@@ -1,6 +1,6 @@
 var company_id='';
 
-
+/*
 $('#select-company').click(function () {
 	company_id=$('#company-dropdown option:selected').text();
 	if(company_id=='None'){
@@ -15,7 +15,7 @@ $('#select-company').click(function () {
 	}
 	
 }
-
+*/
 
 
 
