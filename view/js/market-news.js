@@ -9,12 +9,20 @@ $('#select-company').click(function () {
 		alert('Select a Company from the given options');
 	}
 	else{
-		alert(company_id+' is Selected');
-		window.location.replace("/Research-Platform-Stock-Market/view/php/market-news.php");
+		//alert(company_id+' is Selected');
+		//window.location.replace("/Research-Platform-Stock-Market/view/php/market-news.php");
+
+		//get request to php
+		
+		$.getJSON('/Research-Platform-Stock-Market/view/php/market-news.php', function(data) {
+		console.log(data);
+		console.log(data.value);
+		if(data.result='success'){
 		labeledSpline(company_id);
 		dualChartsOpenScore(company_id);
 		dualChartsCloseScore(company_id);
-		company_id='';
+		}
+		else{alert("Server error. Please repeat selection process");
 	}
 	
 });
