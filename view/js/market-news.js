@@ -4,7 +4,7 @@ var company_id='';
 
 
 $('#select-company').click(function () {
-	company_id=$('#company-dropdown option:selected').text();
+	company_id=$('#company-dropdown option:selected').val();
 	if(company_id=='None'){
 		alert('Select a Company from the given options');
 	}
