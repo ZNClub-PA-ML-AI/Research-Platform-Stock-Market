@@ -17,7 +17,7 @@ $('#select-company').click(function () {
 		
 	}
 	
-}
+});
 
 
 
