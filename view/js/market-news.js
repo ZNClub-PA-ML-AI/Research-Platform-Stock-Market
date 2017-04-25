@@ -1,6 +1,8 @@
+
+
 var company_id='';
 
-/*
+
 $('#select-company').click(function () {
 	company_id=$('#company-dropdown option:selected').text();
 	if(company_id=='None'){
@@ -8,14 +10,15 @@ $('#select-company').click(function () {
 	}
 	else{
 		alert(company_id+' is Selected');
+		window.location.replace("/Research-Platform-Stock-Market/view/php/market-news.php");
 		labeledSpline(company_id);
 		dualChartsOpenScore(company_id);
 		dualChartsCloseScore(company_id);
-			
+		
 	}
 	
 }
-*/
+
 
 
 
