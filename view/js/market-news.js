@@ -180,7 +180,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
     //var sentiment_close = [];
 	
     var size = Object.keys(data.Open).length;
-    console.log(size);
+    //console.log(size);
 
     for (var i = 0; i < size; i += 1) {
       var temp = data['Unnamed: 0'][i];
@@ -307,7 +307,7 @@ $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/'+company_
     var sentiment_close = [];
 	
     var size = Object.keys(data.Open).length;
-    console.log(size);
+    //console.log(size);
 
     for (var i = 0; i < size; i += 1) {
       var temp = data['Unnamed: 0'][i];
