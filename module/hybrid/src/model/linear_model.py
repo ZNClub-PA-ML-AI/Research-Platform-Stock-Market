@@ -73,7 +73,7 @@ print ('Hybrid Method Accuracy for Open price: ', confidence*100)
 
 #hybrid close price
 df=copy.deepcopy(data)
-print(df.columns)
+#print(df.columns)
 X = np.array(df.drop(['ForecastOpen', 'ForecastClose'], 1))
 X = X[:-forecast_out]
 df.dropna(inplace=True)
@@ -116,3 +116,4 @@ for i, row in df.iterrows():
     prev = [row['Open'], row['High'], row['Low'], row['Close'], row['twi_open'], row['twi_close'], row['news_open'], row['news_close']]
 
 hybrid.to_csv('../../data/hybrid.csv', sep=',', encoding='utf-8')
+hybrid.to_csv('../../../../view/data/json/hybrid/hybrid.json', sep=',', encoding='utf-8')
