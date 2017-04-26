@@ -1,7 +1,7 @@
 
 
 var company_id='REL';
-
+candlestick(company_id);
 
 
 /*
@@ -23,7 +23,7 @@ function candlestick(company_id){
 
 $.getJSON('/Research-Platform-Stock-Market/view/data/json/market-news/NSE-'+company_id+'.json', function(data) {
 
-#var size = Object.keys(data.date).length;
+//var size = Object.keys(data.date).length;
 console.log(data);
 
   
