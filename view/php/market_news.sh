@@ -27,7 +27,7 @@ python merge_quandl.py $company_id
 
 
 echo "module 5"
-#python csv_json.py $company_id NSE
+python csv_json.py $company_id NSE
 python csv_json.py $company_id qs
 python csv_json.py $company_id sentiment
 
