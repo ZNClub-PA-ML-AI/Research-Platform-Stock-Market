@@ -18,7 +18,7 @@ if platform.system()=='Windows':
 else:
     company_id,mode=sys.argv[1],sys.argv[2]
 
-filenames=['../../'+company_id+'.csv']
+filenames=['../../data/'+company_id+'.csv']
 
 df=pd.read_csv(filenames[0])
 date_list = df.date.tolist()
