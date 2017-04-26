@@ -100,7 +100,7 @@ for k,v in od.items():
 
 df=pd.DataFrame(score,index=['score'])
 df=df.transpose()
-df.to_csv('../../'+company_id+'_score_'+mode+'.csv',sep=',',encoding='utf-8')
+df.to_csv('../../data/'+company_id+'_score_'+mode+'.csv',sep=',',encoding='utf-8')
 #df.to_json('TCS_score_open.json')
 
 
