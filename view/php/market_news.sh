@@ -27,7 +27,7 @@ python pre_prediction.py $company_id close
 
 
 echo "module 3"
-python merge_sentiment.py $company_id
+python merge_sentiments.py $company_id
 
 echo "module 4"
 python merge_quandl.py $company_id
