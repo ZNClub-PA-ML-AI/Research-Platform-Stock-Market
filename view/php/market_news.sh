@@ -1,4 +1,9 @@
 
+#config
+export PATH="/home/melwyn95/anaconda3/bin:$PATH"
+#echo $PATH
+#alias python="/home/melwyn95/anaconda3/bin/python"
+alias python="/root/anaconda3/bin/python"
 
 #run python scripts for market-news module 
 
