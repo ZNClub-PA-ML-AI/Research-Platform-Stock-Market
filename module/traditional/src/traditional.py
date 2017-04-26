@@ -14,6 +14,7 @@ from sklearn.linear_model import LinearRegression
 import pandas as pd
 import sys
 import quandl
+import pickle
 
 #file_name = '/var/www/html/Research-Platform-Stock-Market/module/traditional/data/'+sys.argv[1]
 #df=pd.read_csv(file_name)
@@ -24,15 +25,12 @@ df = pd.read_csv('a.csv')
 os.remove('a.csv')
 
 
-#print (df.head(5))
 
 df = df[['Date', 'Open',  'High',  'Low',  'Close', 'Total Trade Quantity']]
 
 df.fillna(value=-99999, inplace=True)
 
-#print ('DF head')
 #print (df.head(10))
-#print ('DF tail')
 #print (df.tail(10))
 
 forecast_out = 1
@@ -58,12 +56,14 @@ X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_
 openModel = LinearRegression(n_jobs=-1)
 openModel.fit(X_train, y_train)
 confidence = openModel.score(X_test, y_test)
-#print("Accuracy Open TRADITIONAL: ", confidence * 100.0)
 
+
+pickle.dump(openModel, open('open_model.p', 'wb'))
+
+#print("Accuracy Open TRADITIONAL: ", confidence * 100.0)
 
 #y = np.array(df[['ForecastClose']])
 #X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_size=0.2)
-
 
 #closeModel = LinearRegression(n_jobs=-1)
 #closeModel.fit(X_train, y_train)
@@ -100,31 +100,10 @@ for i, row in df.iterrows():
 #                            })
     new_df = pd.concat([new_df, temp_df])
     prev = [row.Open, row.High, row.Low, row.Close, row['Total Trade Quantity']]
-#new_df.to_csv('traditional.csv', sep=',', encoding='utf-8')
 
-#print (new_df.head(5))
 
 new_df = new_df.reset_index()
 
-#print (new_df.head(5))
-
-#file_name = file_name.split('.')
-#file_name = file_name[0].split('/')
-#file_name = file_name[len(file_name)-1]
-
-#print (file_name)
-#df = pd.read_csv('traditional.csv')
-
-#df = df.sort_values(['Date'],ascending=[1])
-#df.sort_values(by='Date')
-
-#df.to_json('/var/www/html/Research-Platform-Stock-Market/view/json/'+file_name+'.json')
-#print (json.dumps(new_df.to_json()))
-#os.remove('traditional.csv')
-
-#new_df =  new_df.sort_values(['Date'],ascending=[True])
-
-#print (new_df.to_json())
 json_object = new_df.to_json()
 json_object = json.loads(json_object)
 json_object['accuracy'] = confidence*100

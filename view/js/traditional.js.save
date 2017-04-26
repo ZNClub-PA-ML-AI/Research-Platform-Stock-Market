@@ -10,13 +10,10 @@ $(document).ready(function(){
 	$('.predict').click(function(){
 		var open = $('#open').val();
 		var high = $('#high').val();
-		var low = $('#low').val();		
+		var low = $('#low').val();
 		var close = $('#close').val();
-		var volume = $('#volume').val();
-		$.getJSON('/Research-Platform-Stock-Market/view/php/price_predict.php?open='+open+'&high='+high+'&low='+low+'&close='+close+'&volume='+volume, function(data) {
-			$('#prediction').text('Predicted Open Price: '+data['predicted_open_price']);
-		});
-	});
+		$.getJSON('/Research-Platform-Stock-Market/view/php/price_predict.php
+	}):
 	$('.select-company').click(function () {
 		var selected = $('#company-dropdown').val();
 		company_name = $('#company-dropdown option:selected').text();

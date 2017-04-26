@@ -85,7 +85,7 @@
 		<!-- Scrolling Nav JavaScript -->		
 		<script src="js/scrolling-nav.js"></script>
 
-
+	Company Name:
 	<select class="btn" id="company-dropdown" name="company-dropdown">
 		<option value="NSE/RELIANCE">RELIANCE</option>
 		<option value="NSE/AXISBANK">AXISBANK</option>
@@ -223,8 +223,18 @@
 	<button class="select-chart" type="submit">Display Chart</button>
 	<br/><br/>
 	<span id="accuracy"></span>
+	<br/><br/>Prediction of Open price<br/>
+	<table>
+		<tr><td>Open: </td><td><input type="text" id="open"/></td></tr>
+		<tr><td>High: </td><td><input type="text" id="high"/></td></tr>
+		<tr><td>Low: </td><td><input type="text" id="low"/></td></tr>
+		<tr><td>Close: </td><td><input type="text" id="close"/></td></tr>
+		<tr><td>Volume: </td><td><input type="text" id="volume"/></td></tr>
+		<tr><td><button class="predict" type="submit">Predict</button></td></tr>
+	</table>
+	<br/><br/>
+	<span id="prediction"></span>
 	<div id="container" style="min-width: 310px; height:90vh; margin: 0 auto"></div>
-	
     </body>
 </html>
 
