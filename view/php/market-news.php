@@ -8,11 +8,13 @@
  	exec("sudo ./market_news.sh ".$company_id);
 	
 	// delay return of control
+	/*
 	$x = 1; 
 	while($x <= 1050) {	    
 	    $x++;
 	} 
-
+	*/
+	
 	$data=['result'=>'success'];
 	header('Content-Type:application/json');
 	header('Access-Control-Allow-Origing:*');
