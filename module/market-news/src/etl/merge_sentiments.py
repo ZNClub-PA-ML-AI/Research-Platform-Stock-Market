@@ -10,7 +10,7 @@ if platform.system()=='Windows':
 else:
     company_id=sys.argv[1]
 
-filenames=['../../data/'+company_id+'_score_open.csv','../../'+company_id+'_score_close.csv']
+filenames=['../../data/'+company_id+'_score_open.csv','../../data/'+company_id+'_score_close.csv']
 
 #open.csv
 df1=pd.read_csv(filenames[0])
