@@ -69,7 +69,7 @@ X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_
 openModel = LinearRegression(n_jobs=-1)
 openModel.fit(X_train, y_train)
 confidence = openModel.score(X_test, y_test)
-print ('Hybrid Method Accuracy for Open price: ', confidence*100)
+#print ('Hybrid Method Accuracy for Open price: ', confidence*100)
 
 #hybrid close price
 df=copy.deepcopy(data)
@@ -84,7 +84,7 @@ X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_
 closeModel = LinearRegression(n_jobs=-1)
 closeModel.fit(X_train, y_train)
 confidence = closeModel.score(X_test, y_test)
-print ('Hybrid Method Accuracy for Close price: ', confidence*100)
+#print ('Hybrid Method Accuracy for Close price: ', confidence*100)
 
 
 
@@ -115,5 +115,7 @@ for i, row in df.iterrows():
     hybrid = pd.concat([hybrid, temp_df])
     prev = [row['Open'], row['High'], row['Low'], row['Close'], row['twi_open'], row['twi_close'], row['news_open'], row['news_close']]
 
-hybrid.to_csv('../../data/hybrid.csv', sep=',', encoding='utf-8')
-hybrid.to_csv('../../../../view/data/json/hybrid/hybrid.json', sep=',', encoding='utf-8')
+#hybrid.to_csv('../../data/hybrid.csv', sep=',', encoding='utf-8')
+#hybrid.to_csv('../../../../view/data/json/hybrid/hybrid.json', sep=',', encoding='utf-8')
+hybrid = hybrid.reset_index()
+print (hybrid.to_json())
