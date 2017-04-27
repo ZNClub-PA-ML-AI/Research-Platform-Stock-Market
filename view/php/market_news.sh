@@ -25,7 +25,6 @@ python pre_prediction.py $company_id open
 
 python pre_prediction.py $company_id close
 
-
 echo "module 3"
 python merge_sentiments.py $company_id
 
@@ -41,7 +40,7 @@ python csv_json.py $company_id sentiment
 echo "exec model" 
 cd ../model 
 
-python model/linear_model.py $company_id 
+python linear_model.py $company_id 
 
  #end of file 
 
