@@ -69,6 +69,7 @@ X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_
 openModel = LinearRegression(n_jobs=-1)
 openModel.fit(X_train, y_train)
 confidence = openModel.score(X_test, y_test)
+open_accuracy = confidence
 #print ('Hybrid Method Accuracy for Open price: ', confidence*100)
 
 #hybrid close price
@@ -85,7 +86,7 @@ closeModel = LinearRegression(n_jobs=-1)
 closeModel.fit(X_train, y_train)
 confidence = closeModel.score(X_test, y_test)
 #print ('Hybrid Method Accuracy for Close price: ', confidence*100)
-
+close_accuracy = confidence
 
 
 # code to predict output for chart
@@ -118,4 +119,8 @@ for i, row in df.iterrows():
 #hybrid.to_csv('../../data/hybrid.csv', sep=',', encoding='utf-8')
 #hybrid.to_csv('../../../../view/data/json/hybrid/hybrid.json', sep=',', encoding='utf-8')
 hybrid = hybrid.reset_index()
-print (hybrid.to_json())
+json_object = hybrid.to_json()
+json_object = json.loads(json_object)
+json_object['open_accuracy'] = open_accuracy
+json_object['close_accuracy'] = close_accuracy
+print (json.dumps(json_object))
