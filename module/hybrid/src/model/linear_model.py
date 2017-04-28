@@ -7,15 +7,17 @@ import copy
 import platform
 import sys
 import json
-
-if platform.system()=='Windows':
-    company_id='REL'
-else:
-    company_id=sys.argv[1]
-
+import pickle
+#if platform.system()=='Windows':
+#    company_id='REL'
+#else:
+#    company_id=sys.argv[1]
+company_id = sys.argv[1]
 #read file
-df1=pd.read_csv('../../data/'+company_id+'_qt.csv')
-df2=pd.read_csv('../../data/'+company_id+'_sentiment.csv')
+
+df1=pd.read_csv('/var/www/html/Research-Platform-Stock-Market/module/hybrid/data/'+company_id+'_qt.csv')
+df2=pd.read_csv('/var/www/html/Research-Platform-Stock-Market/module/hybrid/data/'+company_id+'_sentiment.csv')
+
 
 #slice df
 df1 = df1[['Date','Open',  'High',  'Low',  'Close', 'open_score', 'close_score']]
@@ -71,6 +73,7 @@ openModel.fit(X_train, y_train)
 confidence = openModel.score(X_test, y_test)
 open_accuracy = confidence
 #print ('Hybrid Method Accuracy for Open price: ', confidence*100)
+pickle.dump(openModel, open('open_model_hybrid.p', 'wb'))
 
 #hybrid close price
 df=copy.deepcopy(data)
@@ -87,7 +90,7 @@ closeModel.fit(X_train, y_train)
 confidence = closeModel.score(X_test, y_test)
 #print ('Hybrid Method Accuracy for Close price: ', confidence*100)
 close_accuracy = confidence
-
+pickle.dump(closeModel, open('close_model_hybrid.p', 'wb'))
 
 # code to predict output for chart
 
@@ -102,7 +105,7 @@ for i, row in df.iterrows():
         temp_df = pd.DataFrame({
                             'Date': [str(i)],
                             'Open': [row.Open],                                                        
-                            'Close': [row.Close],
+                            'Close': [row.Close], 'High': [row.Close], 'Low': [row.Low],
                             'open_predicted': [row.Open],
                             'close_predicted': [row.Close]})
         
