@@ -2,6 +2,7 @@ import datetime
 import pandas as pd
 import collections
 import math
+import sys
 
 filenames = '/var/www/html/Research-Platform-Stock-Market/module/twitter/data/'+sys.argv[1]     #'labeled.csv'
 df = pd.read_csv(filenames)
