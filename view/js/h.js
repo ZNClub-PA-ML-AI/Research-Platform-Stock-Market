@@ -4,8 +4,8 @@ $(document).ready(function(){
 	function getData(selected) {
 		$.getJSON('/Research-Platform-Stock-Market/view/php/hybrid.php?company='+selected, function(data) {			
 			json_data = data;
-			$('#open_accuracy').text('Model Trained With Accuracy: '+json_data.open_accuracy);
-			$('#close_accuracy').text('Model Trained With Accuracy: '+json_data.close_accuracy);
+			$('#open_accuracy').text('Open Model Trained With Accuracy: '+json_data.open_accuracy*100);
+			$('#close_accuracy').text('Close Model Trained With Accuracy: '+json_data.close_accuracy*100);
 		});
 	}
 	$('.predict').click(function(){
