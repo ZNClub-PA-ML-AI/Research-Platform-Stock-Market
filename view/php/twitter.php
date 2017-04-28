@@ -1,5 +1,7 @@
 <?php
-echo "inside twitter-sentiment module";
+//echo "inside twitter-sentiment module";
+header('Access-Control-Allow-Origin: *');
 
-echo exec('./twitter.sh ');
+exec('sudo ./twitter.sh ');
+header('Location: /Research-Platform-Stock-Market/view/twitter.html');
 ?>
